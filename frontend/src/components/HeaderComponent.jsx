@@ -13,7 +13,6 @@ class HeaderComponent extends React.Component {
                     <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
                         <div className="navbar-brand">Контакты</div>
                     </nav>
-
                 </header>
             </div>
         )
