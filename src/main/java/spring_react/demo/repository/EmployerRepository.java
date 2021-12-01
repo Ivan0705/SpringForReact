@@ -6,4 +6,5 @@ import spring_react.demo.model.Employer;
 
 @Repository
 public interface EmployerRepository extends JpaRepository<Employer, Long> {
+
 }
