@@ -2,7 +2,6 @@ package spring_react.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import spring_react.demo.exeption.ResourceNotFoundException;
 import spring_react.demo.model.Employer;
 import spring_react.demo.repository.EmployerRepository;
 import spring_react.demo.service.EmployeeService;
