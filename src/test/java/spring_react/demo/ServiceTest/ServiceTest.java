@@ -42,11 +42,9 @@ public class ServiceTest {
     public void addEmployeeFailTest() {
         Employer employer = new Employer();
 
-        employer.setFirstName("John");
-
         Mockito.doReturn(new Employer())
                 .when(employerRepository)
-                .findByUsername("John");
+                .save(employer);
 
         boolean isUserCreated = employeeService.addUser(employer);
 

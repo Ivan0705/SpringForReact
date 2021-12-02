@@ -6,5 +6,5 @@ import spring_react.demo.model.Employer;
 
 @Repository
 public interface EmployerRepository extends JpaRepository<Employer, Long> {
-    Employer findByUsername(String firstName);
+ //   Employer findByUsername(String firstName);
 }
