@@ -1,6 +1,5 @@
 package spring_react.demo.ServiceTest;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +20,6 @@ public class ServiceTest {
     @Autowired
     @MockBean
     EmployeeService employeeService;
-
 
     @MockBean
     EmployerRepository employerRepository;
