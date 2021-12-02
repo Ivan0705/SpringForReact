@@ -2,7 +2,6 @@ package spring_react.demo.SimpleUnitTest;
 
 import org.junit.*;
 
-
 public class SimpleUnitTest {
     @Test
     public void simpleTest() {
