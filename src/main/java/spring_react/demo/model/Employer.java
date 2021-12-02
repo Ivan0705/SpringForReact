@@ -3,21 +3,20 @@ package spring_react.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="employees")
+@Table(name = "employees")
 public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name="email_id")
+    @Column(name = "email_id")
     private String emailId;
-
 
 
     public long getId() {

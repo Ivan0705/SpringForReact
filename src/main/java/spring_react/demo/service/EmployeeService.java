@@ -14,9 +14,13 @@ import java.util.Map;
 @Service
 @Component
 public class EmployeeService {
-    @Autowired
+    private final
     EmployerRepository employerRepository;
 
+    @Autowired
+    public EmployeeService(EmployerRepository employerRepository) {
+        this.employerRepository = employerRepository;
+    }
 
     public boolean addUser(Employer employer) {
         if (employer.getFirstName() == null) {
