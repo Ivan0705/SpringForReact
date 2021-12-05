@@ -2,8 +2,8 @@ package spring_react.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import spring_react.demo.exeption.ResourceNotFoundException;
 import spring_react.demo.model.Employer;
 import spring_react.demo.repository.EmployerRepository;
@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@Component
 public class EmployeeService {
     private final
     EmployerRepository employerRepository;
@@ -22,6 +21,7 @@ public class EmployeeService {
         this.employerRepository = employerRepository;
     }
 
+    @Transactional
     public boolean addUser(Employer employer) {
         if (employer.getFirstName() == null) {
             return false;
@@ -38,6 +38,7 @@ public class EmployeeService {
         return true;
     }
 
+    @Transactional
     public ResponseEntity<Map<String, Boolean>> remove(Long id) {
         Employer employer = employerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(""));
 
@@ -48,6 +49,7 @@ public class EmployeeService {
         return ResponseEntity.ok(response);
     }
 
+    @Transactional
     public ResponseEntity<Employer> update(Long id, Employer employerDetails) {
         Employer employer = employerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(""));
 
@@ -59,6 +61,7 @@ public class EmployeeService {
         return ResponseEntity.ok(updatedEmployer);
     }
 
+    @Transactional
     public ResponseEntity<Employer> findEmployerById(Long id) {
         Employer employer = employerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employer not exits with id: " + id));

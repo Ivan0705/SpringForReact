@@ -1,9 +1,14 @@
 package spring_react.demo.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "employees")
+@Scope("prototype")
+@Component
 public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +23,9 @@ public class Employer {
     @Column(name = "email_id")
     private String emailId;
 
+    public Employer() {
+        System.out.println("One employer created ");
+    }
 
     public long getId() {
         return id;
@@ -51,6 +59,14 @@ public class Employer {
         this.emailId = emailId;
     }
 
-
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", emailId='" + emailId + '\'' +
+                '}';
+    }
 }
 
