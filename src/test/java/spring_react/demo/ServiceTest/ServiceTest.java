@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.validation.BindingResult;
 import spring_react.demo.model.Employer;
 import spring_react.demo.repository.EmployerRepository;
 import spring_react.demo.service.EmployeeService;
@@ -27,29 +28,30 @@ public class ServiceTest {
     @Test
     public void addEmployee() {
         Employer employer = new Employer();
-        boolean isEmployerCreated = employeeService.addUser(employer);
+        BindingResult result = null;
+        boolean isEmployerCreated = employeeService.addUser(employer, result);
 
         Assert.assertTrue(!isEmployerCreated);
         Assert.assertNotNull(employer);
 
-        Mockito.verify(employeeService, Mockito.times(1)).addUser(employer);
+        Mockito.verify(employeeService, Mockito.times(1)).addUser(employer, result);
         Mockito.verify(employerRepository, Mockito.times(0)).save(ArgumentMatchers.any(Employer.class));
     }
 
     @Test
     public void addEmployeeFailTest() {
         Employer employer = new Employer();
-
+        BindingResult result = null;
         Mockito.doReturn(new Employer())
                 .when(employerRepository)
                 .save(employer);
 
-        boolean isUserCreated = employeeService.addUser(employer);
+        boolean isUserCreated = employeeService.addUser(employer, result);
 
         Assert.assertFalse(isUserCreated);
 
         Mockito.verify(employerRepository, Mockito.times(0)).save(ArgumentMatchers.any(Employer.class));
         Mockito.verify(employeeService, Mockito.times(1))
-                .addUser(ArgumentMatchers.any(Employer.class));
+                .addUser(ArgumentMatchers.any(Employer.class), result);
     }
 }

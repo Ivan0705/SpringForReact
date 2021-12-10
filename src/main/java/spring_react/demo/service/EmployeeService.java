@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import spring_react.demo.exeption.ResourceNotFoundException;
 import spring_react.demo.model.Employer;
 import spring_react.demo.repository.EmployerRepository;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,18 +24,10 @@ public class EmployeeService {
     }
 
     @Transactional
-    public boolean addUser(Employer employer) {
-        if (employer.getFirstName() == null) {
+    public boolean addUser(@Valid Employer employer, BindingResult result) {
+        if (result.hasErrors()) {
             return false;
         }
-
-        if (employer.getLastName() == null) {
-            return false;
-        }
-        if (employer.getEmailId() == null) {
-            return false;
-        }
-
         employerRepository.save(employer);
         return true;
     }
