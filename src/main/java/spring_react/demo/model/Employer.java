@@ -34,7 +34,6 @@ public class Employer {
     private String lastName;
 
     @Column(name = "email_id")
-    //@Email(message = "Email should be email!")
     @NotBlank(message = "Email should not be empty!")
     private String emailId;
 
